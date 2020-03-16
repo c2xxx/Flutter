@@ -1,23 +1,39 @@
 import 'package:flutter/material.dart';
 
-class Page01Home extends StatefulWidget {
+class Page02Second extends StatefulWidget {
+  Page02Second(String title) {
+    this.title = title;
+  }
+
+  String title;
+
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
-    return new Page01HomeState();
+    return new Page02SecondState(title);
   }
 }
 
-class Page01HomeState extends State<Page01Home> {
+class Page02SecondState extends State<Page02Second> {
+  Page02SecondState(String title) {
+    this.title = title;
+  }
+
+  String title;
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold(
+     return Scaffold(
       appBar: AppBar(
-        title: Text('标题'),
+        title: Text('标题' + title),
       ),
       body: Column(
-        children: <Widget>[Text('Page01Home')],
+        children: <Widget>[
+          Text('Page02Second' + title),
+          FlatButton(
+            child: Text('click'),
+            onPressed: () => {Navigator.pushNamed(context, '/')},
+          )
+        ],
       ),
     );
   }

@@ -5,6 +5,7 @@ import 'package:flutter_001/Demo01.dart';
 import 'package:flutter_001/Demo03View.dart';
 import 'package:flutter_001/Demo04Test.dart';
 import 'package:flutter_001/Demo05Http.dart';
+import 'package:flutter_001/Demo06WebView.dart';
 
 import 'Demo02Image.dart';
 
@@ -33,12 +34,15 @@ class _MyHomePageState extends State<MyHome> {
     } else if (msg == '控件') {
       Navigator.push(context,
           new MaterialPageRoute(builder: (context) => new Demo03View()));
-    }else if (msg == 'test') {
+    } else if (msg == 'test') {
       Navigator.push(context,
           new MaterialPageRoute(builder: (context) => new Demo04Test()));
-    }else if (msg == 'http') {
+    } else if (msg == 'http') {
       Navigator.push(context,
           new MaterialPageRoute(builder: (context) => new Demo05Http()));
+    } else if (msg == 'webView') {
+      Navigator.push(context,
+          new MaterialPageRoute(builder: (context) => new Demo06WebView()));
     }
   }
 
@@ -109,6 +113,13 @@ class _MyHomePageState extends State<MyHome> {
                         style: TextStyle(fontSize: 33, color: Colors.yellow),
                       ),
                       onPressed: () => {goPage(context, 'http')},
+                    ),
+                    OutlineButton(
+                      child: Text(
+                        'webView',
+                        style: TextStyle(fontSize: 33, color: Colors.yellow),
+                      ),
+                      onPressed: () => {goPage(context, 'webView')},
                     ),
                     Text(
                       'I\'m fine,Thank you!',

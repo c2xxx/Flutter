@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_002/pages/Page02Second.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Page04ViewPaper extends StatefulWidget {
   @override
@@ -15,9 +16,13 @@ class Page04ViewPaperState extends State<Page04ViewPaper>
   @override
   void initState() {
     controller = new TabController(length: 3, vsync: this);
-    controller.index = 1;
+
     super.initState();
   }
+
+  final items = new List<String>.generate(10000, (i) => "Item $i");
+
+  initData() {}
 
   @override
   void dispose() {
@@ -31,15 +36,53 @@ class Page04ViewPaperState extends State<Page04ViewPaper>
       appBar: AppBar(
         title: Text('TabHome'),
       ),
-      drawer: Drawer(),
+//      drawer: Drawer(),
       body: new TabBarView(
         controller: controller,
         children: <Widget>[
-          new Page02Second("A"),
-          new Page02Second("B"),
-          new Page02Second("C"),
+          new Text("Content1"),
+          new Column(
+            children: <Widget>[
+              new Text("Content2"),
+              FlatButton(
+                child: Text('左边一页'),
+                onPressed: () => {controller.index = 0},
+              ),
+              FlatButton(
+                child: Text('上一页'),
+                onPressed: () => {Navigator.pop(context)},
+              ),
+              FlatButton(
+                child: Text('右边一页'),
+                onPressed: () => {controller.index = 2},
+              ),
+              FlatButton(
+                child: Text('toast'),
+                onPressed: () => {showToast()},
+              )
+            ],
+          ),
+//          new Text("Content3"),
+          new ListView.builder(
+            itemCount: items.length,
+            itemBuilder: (context, index) {
+              return new ListTile(
+                title: new Text('${items[index]}'),
+              );
+            },
+          )
         ],
       ),
     );
+  }
+
+  showToast() {
+    Fluttertoast.showToast(
+        msg: "网络连接错误",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIos: 1,
+//        backgroundColor: Colors.blue,
+        textColor: Color(0xFF880000));
   }
 }

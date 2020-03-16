@@ -1,5 +1,9 @@
 package com.chen.flutter003;
 
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -44,9 +48,19 @@ public class BattlePowerPlugin implements MethodChannel.MethodCallHandler {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                if (runTimeSender != null) {
-                    runTimeSender.send(System.currentTimeMillis() - startTime);
-                }
+//                if (runTimeSender != null) {
+//                    runTimeSender.send(System.currentTimeMillis() - startTime);
+//                }
+
+                Handler handler = new Handler(Looper.getMainLooper());
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (runTimeSender != null)
+                            runTimeSender.send("XX");
+                        Log.i("success", "runTimeSender.send(\"XX\")");
+                    }
+                });
             }
         }, 5000, 5000);
     }

@@ -23,7 +23,6 @@ class MainActivity : FlutterActivity() {
         super.onCreate(savedInstanceState)
         GeneratedPluginRegistrant.registerWith(this)
         MyViewFlutterPlugin.registerWith(this)
-//        FlutterPluginCounter.registerWith(this)
         FlutterPluginCounter.registerWith(this.registrarFor(FlutterPluginCounter.CHANNEL));
 
 
@@ -40,7 +39,7 @@ class MainActivity : FlutterActivity() {
             }
         }
 
-//        BattlePowerPlugin.registerWith(this);
+        BattlePowerPlugin.registerWith(this.registrarFor("battle_power"))
         BattlePowerPlugin.startTimeSender();
     }
 

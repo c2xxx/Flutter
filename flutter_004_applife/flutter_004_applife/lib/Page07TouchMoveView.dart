@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'dart:math';
 
-class Page06TouchMoveView extends StatefulWidget {
+class Page07TouchMoveView extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return TouchMoveState();
   }
 }
-class TouchMoveState extends State<Page06TouchMoveView> {
+class TouchMoveState extends State<Page07TouchMoveView> {
   TouchMovePainter painter;
   //静止状态下的offset
   Offset idleOffset=Offset(0, 0);

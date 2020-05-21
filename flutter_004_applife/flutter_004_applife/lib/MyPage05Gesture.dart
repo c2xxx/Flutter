@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MyPage04Gesture extends StatefulWidget {
+class MyPage05Gesture extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return MyPage04GestureState();
+    return MyPage05GestureState();
   }
 }
 
-class MyPage04GestureState extends State<MyPage04Gesture> {
+class MyPage05GestureState extends State<MyPage05Gesture> {
   String title = 'ABCD';
   int index = 1;
 
@@ -26,74 +26,56 @@ class MyPage04GestureState extends State<MyPage04Gesture> {
                 print("哈哈哈" + this.title);
               }),
         ),
-        body: renderBody(context, title));
+        body: new GestureDetector(
+          // 长按事件
+          onTap: () {},
+          onTapDown: null,
+          onHorizontalDragCancel: () {
+            print("onHorizontalDragCancel");
+          },
+          onHorizontalDragDown: (e) {
+            print("onHorizontalDragDown");
+          },
+          onHorizontalDragEnd: (e) {
+            print("onHorizontalDragEnd");
+          },
+          onHorizontalDragStart: (e) {
+            print("onHorizontalDragStart");
+          },
+          onHorizontalDragUpdate: (e) {
+            print("onHorizontalDragUpdate");
+          },
+          onVerticalDragDown: (e) {
+            print("onHorizontalDragEnd");
+          },
+          onVerticalDragStart: (e) {
+            print("onVerticalDragStart");
+          },
+          onVerticalDragUpdate: (e) {
+            print("onVerticalDragUpdate");
+          },
+          onVerticalDragCancel: () {
+            print("onVerticalDragCancel");
+          },
+          onVerticalDragEnd: (e) {
+            print("onVerticalDragEnd");
+          },
+          onTapUp: (e) {
+            print("onTapUp");
+          },
+          onPanDown: (e) {
+            print("onPanDown");
+          },
+          onDoubleTap: () {
+            // 双击事件
+            Scaffold.of(context).showSnackBar(
+                new SnackBar(content: new Text('I\'m Snack Bar')));
+          },
+          child: new Container(
+            decoration: BoxDecoration(color: Colors.red),
+            padding: new EdgeInsets.all(12.0),
+            child: new Text('Custom Button ' + title),
+          ),
+        ));
   }
-}
-
-// 调用自定义的 Button
-Widget renderBody(BuildContext context, String title) {
-  return new Center(
-    child: new MyButton(title),
-  );
-}
-
-class MyButton extends StatelessWidget {
-  String title;
-
-  MyButton(this.title);
-
-  @override
-  Widget build(BuildContext context) {
-    return new GestureDetector(
-      // 长按事件
-      onTap: () {},
-      onTapDown: null,
-      onHorizontalDragCancel: () {
-        print("onHorizontalDragCancel");
-      },
-      onHorizontalDragDown: (e) {
-        print("onHorizontalDragDown");
-      },
-      onHorizontalDragEnd: (e) {
-        print("onHorizontalDragEnd");
-      },
-      onHorizontalDragStart: (e) {
-        print("onHorizontalDragStart");
-      },
-      onHorizontalDragUpdate: (e) {
-        print("onHorizontalDragUpdate");
-      },
-      onVerticalDragDown: (e) {
-        print("onHorizontalDragEnd");
-      },
-      onVerticalDragStart: (e) {
-        print("onVerticalDragStart");
-      },
-      onVerticalDragUpdate: (e) {
-        print("onVerticalDragUpdate");
-      },
-      onVerticalDragCancel: () {
-        print("onVerticalDragCancel");
-      },
-      onVerticalDragEnd: (e) {
-        print("onVerticalDragEnd");
-      },
-      onTapUp: (e) {
-        print("onTapUp");
-      },
-      onPanDown: (e) {
-        print("onPanDown");
-      },
-      onDoubleTap: () {
-        // 双击事件
-        Scaffold.of(context)
-            .showSnackBar(new SnackBar(content: new Text('I\'m Snack Bar')));
-      },
-      child: new Container(
-        decoration: BoxDecoration(color: Colors.red),
-        padding: new EdgeInsets.all(12.0),
-        child: new Text('Custom Button ' + title),
-      ),
-    );
-  }
-}
+} 
